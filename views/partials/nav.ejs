@@ -1,0 +1,45 @@
+<nav>
+    <input type="checkbox" class="toggler">
+    <div class="hamburger"><div class="inner-ham"></div></div>
+	<div class="container">
+		<div class="logo">
+            <a href="/">
+                <img src="/JazzBlogLogo.png" alt="Jazz Blog Logo">
+                <h1>Jazz Blog</h1>
+            </a>
+        </div>
+        <div class="menu-wrapper">
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <% if (user) { %>
+                    <li class="mobile"><a href="/blog/myposts">My posts</a></li>
+                    <li class="mobile"><a href="/users/logout">Logout</a></li>
+                <% } %>
+            </ul>
+        </div>
+
+        <% if (user) { %>
+            <div class="user">
+                <div class="user-display">
+                    <i class="fa-solid fa-user"></i><%= user.username %>
+                </div>
+                <a class="btn" href="/blog/create">New post</a>
+                <ul class="user-panel">
+                    <li><a href="/blog/myposts"><i class="fa-regular fa-folder"></i>My posts</a></li>
+                    <li><a href="/users/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+                </ul>
+            </div>
+
+        <% } else { %>
+
+            <ul class="auth">
+                <li><a href="/users/login">Login</a></li>
+                <li><a class="btn" href="/users/signup">Sign up</a></li>
+            </ul>
+
+        <% } %>
+
+	</div>
+</nav>

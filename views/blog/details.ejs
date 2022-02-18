@@ -1,0 +1,77 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+<section class="section">
+    <div class="details-card">
+        <h1><%= post.title %></h1>
+        <h4><i class="fa-solid fa-user"></i>By <%= post.author.username %></h4>
+        <small>
+            <i class="fa-solid fa-calendar-days"></i>
+            <%= new Intl.DateTimeFormat('en-ca', { 
+                year: 'numeric', month: 'numeric', day: 'numeric'
+            }).format(post.createdAt) %>
+        </small>
+
+        <% if (user && user._id.toString() === post.author._id.toString()) { %>
+            <div class="btn-group">
+                <a href="/blog/update/<%= post._id %>" class="edit"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a class="delete"><i class="fa-regular fa-trash-can"></i></a>
+                <div class="btn-group-error"></div>
+            </div>
+        <% } %>
+        <hr>
+        <p><%= post.post %></p>
+    </div>
+</section>
+
+<script>
+
+    function popupShow(title, text) {
+        const popup = `
+            <div style="width:30%; background-color: #fff; padding: 2rem; border-radius: 15px;">
+                <h1 style="margin-bottom: 1rem;">${title}</h1>
+                <p style="margin-bottom: 2rem; font-size: 1.2rem;">${text}</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a id="delete" href="#" class="btn" style="background-color: red; box-shadow: none;">Yes</a>
+                    <a id="no" href="#" class="btn" style="background-color: #fff; color: #42414d; border: 2px solid black; box-shadow: none;">No</a>
+                </div>
+            </div>
+        `
+        const bg = document.createElement('div')
+        bg.classList.add('bg')
+        bg.style.cssText = 'width: 100vw; height: 100vh; background-color: rgb(0, 0, 0, 0.7); position: fixed; inset: 0; display: flex; justify-content: center; align-items: center;'
+
+        bg.insertAdjacentHTML('beforeend', popup)
+        document.querySelector('.section').insertAdjacentElement('afterend', bg)
+    }
+
+    function popupHide() {
+        document.querySelector('.bg')?.remove()
+    }
+
+    document.querySelector('.delete')?.addEventListener('click', () => {
+        popupShow('Confirmation', 'Do you really want to delete this post?')
+
+        document.querySelector('.bg').addEventListener('click', (e) => {
+            if(e.target.matches('.bg') || e.target.matches('#no')) popupHide() 
+        })
+
+        const id = '<%= post._id  %>'
+        document.querySelector('#delete')?.addEventListener('click', async (e) => {
+            try {
+                const req = await fetch(`/blog/post/${id}`, { method: 'DELETE' })
+                const res = await req.json()
+                if (res.error) {
+                    document.querySelector('.btn-group-error').textContent = res.error
+                }
+                if (res.id) {
+                    location.href = '/blog'
+                }
+            } catch(err) {
+                console.log(err)
+            } 
+        })
+    })
+</script>
+
+<%- include('../partials/tail.ejs') %>

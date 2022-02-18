@@ -1,0 +1,75 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+<section class="section">
+    <div class="card-large">
+        <div class="text-cell">
+            <img src="/JazzBlogLogo.png" alt="logo">
+            <h1>Welcome to Jazz Blog</h1>
+            <h3>A place to discuss all that jazz</h3>
+        </div>
+        <div class="form-cell">
+            <h1>Login</h1>
+            <form class="form">
+                <input type="text" name="email" placeholder="Email" autocomplete="off">
+                <div class="pass">
+                    <input type="password" name="password" placeholder="Password" autocomplete="off">
+                    <i class="fa-solid fa-eye"></i>
+                    <i class="fa-solid fa-eye-slash"></i>
+                </div>
+                <button id="signin-submit" type="submit" class="btn btn-submit">Submit</button>
+            </form>
+            <p>Don't have an account ? <span class="color-link"><a href="/users/signup">Sign up</a></span></p>
+        </div>
+    </div>
+</section>
+
+<script>
+    const form = document.querySelector('form')
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+
+        const data = {
+            email: form.email.value,
+            password: form.password.value,
+        }
+
+        try {
+            const req = await fetch('/users/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            const res = await req.json()
+            if (res.error) {
+                Object.keys(res.error).forEach(key => {
+                    const ref = document.querySelector(`.form input[name=${key}]`)
+                    ref.value = ''
+                    ref.placeholder = res.error[key]
+                    ref.classList.add('field-error')
+                })
+            }
+            if (res.id) {
+                location.href = '/blog'
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    })
+
+    document.querySelector('.pass').addEventListener('click', (e) => {
+        if (e.target.matches('.fa-eye')) {
+            form.password.type = 'text'
+            e.target.style.display = 'none'
+            document.querySelector('.fa-eye-slash').style.display = 'block'
+        }
+        if (e.target.matches('.fa-eye-slash')) {
+            form.password.type = 'password'
+            e.target.style.display = 'none'
+            document.querySelector('.fa-eye').style.display = 'block'
+        }
+    })
+</script>
+
+<%- include('../partials/tail.ejs') %>

@@ -1,0 +1,33 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+<div class="container">
+    <h1 class="section-title">Jazz Blog community posts</h1>
+    <div class="post-grid">
+        <% if (posts.length === 0) { %>
+            <div class="simple-card">
+                <h3>This blog as been really quiet...</h3>
+                <a class="btn" href="/users/signup">Sign in</a>
+            </div>
+        <% } %>
+        <% posts.forEach(post => { %>
+            <a href="/blog/post/<%= post._id %>" class="post-grid-item">
+                <h1><%= post.title %></h1>
+                <h4><i class="fa-solid fa-user"></i>By <%= post.author.username %></h4>
+                <p class="sample">
+                    <%= post.post.split(/\s+/).slice(0, 20).join(' ').concat('...') %> <span class="more">[Read more]</span>
+                </p>
+                <p>
+                    <small>
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <%= new Intl.DateTimeFormat('en-ca', { 
+                            year: 'numeric', month: 'numeric', day: 'numeric'
+                        }).format(post.createdAt) %>
+                    </small>
+                </p>
+            </a>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('../partials/tail.ejs') %>

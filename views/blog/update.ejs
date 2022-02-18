@@ -1,0 +1,50 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+<section class="section">
+    <div class="card-small">
+        <h1 class="section-title">Update Your Post</h1>
+        <form class="form">
+            <input type="text" name="title" placeholder="Title" value="<%= post.title %>" autocomplete="off">
+            <textarea name="post" placeholder="Text" spellcheck="false" autocomplete="off"><%= post.post %></textarea>
+            <button id="post-update" type="submit" class="btn btn-submit">Submit</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    const form = document.querySelector('form')
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+
+        const data = {
+            title: form.title.value,
+            post: form.post.value,
+        }
+
+        try {
+            const req = await fetch('/blog/post/<%= post._id %>', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            const res = await req.json()
+            if (res.error) {
+                if(res.error.messgage) return console.log(res.error.messgage)
+                Object.keys(res.error).forEach(key => {
+                    const ref = document.querySelector(`.form input[name=${key}]`) || document.querySelector(`.form textarea[name=${key}]`)
+                    ref.value = ''
+                    ref.placeholder = res.error[key]
+                    ref.classList.add('field-error')
+                })
+            }
+            if (res.id) {
+                location.href = '/blog'
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    })
+</script>
+
+<%- include('../partials/tail.ejs') %>
