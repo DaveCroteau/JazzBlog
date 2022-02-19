@@ -15,4 +15,4 @@ This app is using the following technologies:
 
 ## live demo
 
-[Jazz Blog](https://https://jazzblog.herokuapp.com)
+[Jazz Blog](https://jazzblog.herokuapp.com)
