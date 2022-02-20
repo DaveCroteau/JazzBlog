@@ -2,7 +2,7 @@
 <%- include('../partials/nav.ejs') %>
 
 <div class="container">
-    <h1 class="section-title"><%= user.username %>'s blog post<% if (posts.length > 1) { %>s<% } %></h1>
+    <h1 class="section-title"><%= user.username %>'s post<% if (posts.length > 1) { %>s<% } %></h1>
     <div class="post-grid">
         <% if (posts.length === 0) { %>
             <div class="simple-card">

@@ -21,11 +21,6 @@ ul {
 	list-style: none;
 }
 
-.bullet {
-	list-style: disc;
-	padding-left: 1rem;
-}
-
 a {
 	text-decoration: none;
 	color: inherit;
@@ -85,6 +80,7 @@ body {
 }
 
 .form {
+	width: 100%;
 	margin: 1rem 0;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -94,7 +90,8 @@ body {
 .form input,
 .form textarea {
 	font-family: inherit;
-	min-width: 20rem;
+	min-width: 15rem;
+	width: 100%;
 	background-color: var(--bg);
 	padding: 0.5rem 1rem;
 	border: none;
@@ -259,6 +256,12 @@ nav ul a:hover:not(.btn) {
 	height: 5rem;
 	display: flex;
 	align-items: center;
+}
+
+@media (max-width: 400px) {
+	.user-display {
+		display: none;
+	}
 }
 
 .user-display:hover {
@@ -467,25 +470,19 @@ nav ul a:hover:not(.btn) {
 	padding: 5rem;
 	border-radius: 15px;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 	justify-items: center;
 	align-items: center;
 	gap: 5rem;
 }
 
-@media (max-width: 650px) {
-	.card-large {
-		padding: 5rem 1rem;
-		width: 90%;
-	}
-}
-
 .text-cell {
+	width: 90%;
 	text-align: center;
-}
-
-.text-cell h1 {
-	font-size: xx-large;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .text-cell img {
@@ -495,18 +492,31 @@ nav ul a:hover:not(.btn) {
 }
 
 .form-cell {
+	width: 90%;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .form-cell h1 {
 	font-size: xx-large;
 }
 
+@media (max-width: 650px) {
+	.card-large {
+		padding: 5rem 0;
+		margin: 5rem 0;
+		width: 90%;
+	}
+}
+
 /* BLOG POST LAYOUT */
 
 .post-grid {
 	display: grid;
-	grid-template-columns: minmax(350px, 60%);
+	grid-template-columns: minmax(300px, 60%);
 	gap: 2rem;
 	margin-bottom: 5rem;
 	justify-content: center;
@@ -517,6 +527,12 @@ nav ul a:hover:not(.btn) {
 	border-radius: 15px;
 	padding: 3rem;
 	transition: box-shadow 0.5s ease;
+}
+
+@media (max-width: 400px) {
+	.post-grid-item {
+		padding: 1rem;
+	}
 }
 
 .post-grid-item h1 {
@@ -620,7 +636,7 @@ nav ul a:hover:not(.btn) {
 /* ABOUT */
 
 .about {
-	text-align: justify;
+	text-align: center;
 	font-size: 1.1rem;
 }
 

@@ -28,10 +28,10 @@
 
     function popupShow(title, text) {
         const popup = `
-            <div style="width:30%; background-color: #fff; padding: 2rem; border-radius: 15px;">
+            <div style="width: max-content; background-color: #fff; padding: 2rem; text-align: center; border-radius: 15px;">
                 <h1 style="margin-bottom: 1rem;">${title}</h1>
                 <p style="margin-bottom: 2rem; font-size: 1.2rem;">${text}</p>
-                <div style="display: flex; gap: 1rem;">
+                <div style="display: flex; justify-content: center; gap: 1rem;">
                     <a id="delete" href="#" class="btn" style="background-color: red; box-shadow: none;">Yes</a>
                     <a id="no" href="#" class="btn" style="background-color: #fff; color: #42414d; border: 2px solid black; box-shadow: none;">No</a>
                 </div>
