@@ -35,7 +35,6 @@ body {
 	font-family: 'Noto Sans', sans-serif;
 	background-color: var(--bg);
 	line-height: 1.5;
-	width: 100%;
 }
 
 /* UTILITIES */
@@ -426,7 +425,8 @@ nav ul a:hover:not(.btn) {
 
 	.menu-wrapper {
 		position: fixed;
-		inset: 0;
+		top: 0;
+		left: 0;
 		margin: 0;
 		width: 100vw;
 		height: 100vh;
