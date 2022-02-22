@@ -62,11 +62,13 @@
 
     document.querySelector('.pass').addEventListener('click', (e) => {
         if (e.target.matches('.fa-eye')) {
+            alert('clicked')
             form.password.type = 'text'
             e.target.style.display = 'none'
             document.querySelector('.fa-eye-slash').style.display = 'block'
         }
         if (e.target.matches('.fa-eye-slash')) {
+            alert('clicked')
             form.password.type = 'password'
             e.target.style.display = 'none'
             document.querySelector('.fa-eye').style.display = 'block'
