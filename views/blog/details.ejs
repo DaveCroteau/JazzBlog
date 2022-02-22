@@ -50,7 +50,6 @@
     }
 
     document.querySelector('.delete')?.addEventListener('click', () => {
-        alert('clicked')
         popupShow('Confirmation', 'Do you really want to delete this post?')
         document.querySelector('.bg').addEventListener('click', (e) => {
             if(e.target.matches('.bg') || e.target.matches('#no')) popupHide() 
