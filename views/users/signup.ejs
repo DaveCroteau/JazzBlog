@@ -60,11 +60,9 @@
         }
     })
 
-    function visiblePass(e) {
-        
-    }
+    const events = ['click', 'touchstart']
 
-    ['click', 'touchstart'].forEach(event => {
+    events.forEach(event => {
         document.querySelector('.pass').addEventListener(event, (e) => {
             if (e.target.matches('.fa-eye')) {
                 form.password.type = 'text'
