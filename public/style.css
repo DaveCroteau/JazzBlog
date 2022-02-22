@@ -126,7 +126,6 @@ body {
 	transform: translateY(-50%);
 	cursor: pointer;
 	opacity: 0.5;
-	z-index: 1;
 }
 
 .fa-eye-slash {
@@ -137,7 +136,6 @@ body {
 	transform: translateY(-50%);
 	cursor: pointer;
 	opacity: 0.5;
-	z-index: 1;
 }
 
 .color-link a {

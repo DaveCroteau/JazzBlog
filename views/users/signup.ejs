@@ -60,34 +60,23 @@
         }
     })
 
-    document.querySelector('.pass').addEventListener('click', (e) => {
-        if (e.target.matches('.fa-eye')) {
-            alert('clicked')
-            form.password.type = 'text'
-            e.target.style.display = 'none'
-            document.querySelector('.fa-eye-slash').style.display = 'block'
-        }
-        if (e.target.matches('.fa-eye-slash')) {
-            alert('clicked')
-            form.password.type = 'password'
-            e.target.style.display = 'none'
-            document.querySelector('.fa-eye').style.display = 'block'
-        }
-    })
+    function visiblePass(e) {
+        
+    }
 
-    document.querySelector('.pass').addEventListener('touchstart', (e) => {
-        if (e.target.matches('.fa-eye')) {
-            alert('clicked')
-            form.password.type = 'text'
-            e.target.style.display = 'none'
-            document.querySelector('.fa-eye-slash').style.display = 'block'
-        }
-        if (e.target.matches('.fa-eye-slash')) {
-            alert('clicked')
-            form.password.type = 'password'
-            e.target.style.display = 'none'
-            document.querySelector('.fa-eye').style.display = 'block'
-        }
+    ['click', 'touchstart'].forEach(event => {
+        document.querySelector('.pass').addEventListener(event, (e) => {
+            if (e.target.matches('.fa-eye')) {
+                form.password.type = 'text'
+                e.target.style.display = 'none'
+                document.querySelector('.fa-eye-slash').style.display = 'block'
+            }
+            if (e.target.matches('.fa-eye-slash')) {
+                form.password.type = 'password'
+                e.target.style.display = 'none'
+                document.querySelector('.fa-eye').style.display = 'block'
+            }
+        })
     })
 </script>
 
