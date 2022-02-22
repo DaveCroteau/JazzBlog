@@ -182,6 +182,7 @@ body {
 nav {
 	background-color: var(--white);
 	font-weight: bold;
+	width: 100%;
 }
 
 nav .container {
