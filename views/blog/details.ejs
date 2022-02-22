@@ -49,8 +49,11 @@
         document.querySelector('.bg')?.remove()
     }
 
-    ['click', 'touchstart'].forEach(event => {
+    const events = ['click', 'touchstart']
+
+    events.forEach(event => {
         document.querySelector('.delete')?.addEventListener(event, () => {
+        alert('clicked')
         popupShow('Confirmation', 'Do you really want to delete this post?')
 
         document.querySelector('.bg').addEventListener('click', (e) => {
