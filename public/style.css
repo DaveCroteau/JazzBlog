@@ -81,6 +81,7 @@ body {
 
 .form {
 	width: 100%;
+	max-width: 20rem;
 	margin: 1rem 0;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -90,7 +91,6 @@ body {
 .form input,
 .form textarea {
 	font-family: inherit;
-	min-width: 15rem;
 	width: 100%;
 	background-color: var(--bg);
 	padding: 0.5rem 1rem;
@@ -227,9 +227,12 @@ nav .container {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	gap: 1rem;
 	text-transform: uppercase;
 	flex: 1;
+}
+
+.auth li {
+	margin-left: 1rem;
 }
 
 nav ul a {
@@ -470,7 +473,7 @@ nav ul a:hover:not(.btn) {
 	padding: 5rem;
 	border-radius: 15px;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	justify-items: center;
 	align-items: center;
 	gap: 5rem;
@@ -613,7 +616,10 @@ nav ul a:hover:not(.btn) {
 	display: inline-flex;
 	justify-content: start;
 	align-items: center;
-	gap: 1rem;
+}
+
+.btn-group i {
+	margin-right: 1rem;
 }
 
 .btn-group-error {
