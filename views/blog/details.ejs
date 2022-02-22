@@ -49,12 +49,14 @@
         document.querySelector('.bg')?.remove()
     }
 
-    document.querySelector('.delete')?.addEventListener('click', () => {
+    ['click', 'touchstart'].forEach(event => {
+        document.querySelector('.delete')?.addEventListener(event, () => {
         popupShow('Confirmation', 'Do you really want to delete this post?')
 
         document.querySelector('.bg').addEventListener('click', (e) => {
             if(e.target.matches('.bg') || e.target.matches('#no')) popupHide() 
         })
+    })
 
         const id = '<%= post._id  %>'
         document.querySelector('#delete')?.addEventListener('click', async (e) => {
