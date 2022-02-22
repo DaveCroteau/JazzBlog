@@ -473,7 +473,7 @@ nav ul a:hover:not(.btn) {
 	padding: 5rem;
 	border-radius: 15px;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
 	justify-items: center;
 	align-items: center;
 	gap: 5rem;
