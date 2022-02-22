@@ -35,6 +35,7 @@ body {
 	font-family: 'Noto Sans', sans-serif;
 	background-color: var(--bg);
 	line-height: 1.5;
+	width: 100%;
 }
 
 /* UTILITIES */
@@ -182,7 +183,6 @@ body {
 nav {
 	background-color: var(--white);
 	font-weight: bold;
-	width: 100%;
 }
 
 nav .container {
@@ -190,7 +190,6 @@ nav .container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 1rem;
 }
 
 .logo {
